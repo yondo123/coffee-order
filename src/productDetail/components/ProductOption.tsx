@@ -6,36 +6,40 @@ import { ProductOrder } from './ProductOrder';
 import type { ProductOptionData } from '../types';
 
 interface ProductOptionProps {
-  productOptions: ProductOptionData[];
-  productPrice: number;
-  productName: string;
+  options: ProductOptionData[];
+  price: number;
+  name: string;
 }
 
-export const ProductOption = ({ productName, productPrice, productOptions }: ProductOptionProps) => {
+export const ProductOption = ({ name, price, options }: ProductOptionProps) => {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
-  const selectedOption = productOptions.find(({ id }) => id === Number(selectedOptionId));
+  const selectedOption = options.find(({ id }) => id === Number(selectedOptionId));
+
+  const createOptionList = (options: ProductOptionData[], name: string) => {
+    return options.map(({ id, name: optionName, price, stock }) => {
+      const baseLabel = stock ? `${name} ${optionName}` : `(품절) ${name} ${optionName}`;
+      const priceLabel = price ? ` (+${formatNumberToCKoreanCurrency(price)} 원)` : '';
+      const label = [baseLabel, priceLabel].join('');
+
+      return {
+        label,
+        value: String(id),
+        disabled: !stock
+      };
+    });
+  };
 
   return (
     <ProductOptionContainer>
-      <h3>{productName}</h3>
-      <p>{formatNumberToCKoreanCurrency(productPrice)} 원</p>
+      <h3>{name}</h3>
+      <p>{formatNumberToCKoreanCurrency(price)} 원</p>
       <Select
         onChange={(e) => {
           setSelectedOptionId(e.target.value);
         }}
-        list={productOptions.map(({ id, name, price, stock }) => {
-          let label = stock ? `${productName} ${name}` : `(품절) ${productName} ${name}`;
-          if (price) {
-            label += ` (${formatNumberToCKoreanCurrency(price)} 원)`;
-          }
-          return {
-            label,
-            value: String(id),
-            disabled: !stock
-          };
-        })}
+        list={createOptionList(options, name)}
       />
-      <ProductOrder option={selectedOptionId ? productOptions : null} />
+      <ProductOrder option={selectedOption} />
     </ProductOptionContainer>
   );
 };
