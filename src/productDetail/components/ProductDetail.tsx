@@ -4,7 +4,7 @@ import { isEmptyObject } from '@shared/utils/object';
 import { EmptyPage } from '@layout/components';
 import { ProductOption } from './ProductOption';
 import { ProductDetailContainer } from '../styles';
-import { ImageHalf } from '@layout/mixins';
+import { ImageCenter } from '@layout/mixins';
 
 export const ProductDetail = () => {
   const productId = useRouterLocation();
@@ -18,9 +18,9 @@ export const ProductDetail = () => {
     <section>
       <h2>{productDetail.name}</h2>
       <ProductDetailContainer>
-        <ImageHalf>
-          <img src={productDetail.imageUrl} alt={productDetail.name} width={128} height={128} />
-        </ImageHalf>
+        <ImageCenter>
+          <img src={productDetail.imageUrl} alt={productDetail.name} />
+        </ImageCenter>
         <ProductOption name={productDetail.name} price={productDetail.price} options={productDetail.productOptions} />
       </ProductDetailContainer>
     </section>
