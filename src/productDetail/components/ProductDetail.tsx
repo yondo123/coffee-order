@@ -9,6 +9,7 @@ import { ImageCenter } from '@layout/mixins';
 export const ProductDetail = () => {
   const productId = useRouterLocation();
   const productDetail = useRequestProductDetail(productId);
+  const { id, name, price, productOptions, imageUrl } = productDetail;
 
   if (isEmptyObject(productDetail)) {
     return <EmptyPage message="해당하는 상품이 존재하지 않습니다." />;
@@ -16,12 +17,12 @@ export const ProductDetail = () => {
 
   return (
     <section>
-      <h2>{productDetail.name}</h2>
+      <h2>{name}</h2>
       <ProductDetailContainer>
         <ImageCenter>
-          <img src={productDetail.imageUrl} alt={productDetail.name} />
+          <img src={imageUrl} alt={name} />
         </ImageCenter>
-        <ProductOption name={productDetail.name} price={productDetail.price} options={productDetail.productOptions} />
+        <ProductOption name={name} price={price} options={productOptions} productId={id} />
       </ProductDetailContainer>
     </section>
   );

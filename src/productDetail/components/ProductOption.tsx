@@ -9,9 +9,10 @@ interface ProductOptionProps {
   options: ProductOptionData[];
   price: number;
   name: string;
+  productId: number;
 }
 
-export const ProductOption = ({ name, price, options }: ProductOptionProps) => {
+export const ProductOption = ({ name, price, options, productId }: ProductOptionProps) => {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const selectedOption = options.find(({ id }) => id === Number(selectedOptionId));
 
@@ -39,7 +40,7 @@ export const ProductOption = ({ name, price, options }: ProductOptionProps) => {
         }}
         list={createOptionList(options, name)}
       />
-      <ProductOrder option={selectedOption} />
+      <ProductOrder option={selectedOption} productId={productId} />
     </ProductOptionContainer>
   );
 };
