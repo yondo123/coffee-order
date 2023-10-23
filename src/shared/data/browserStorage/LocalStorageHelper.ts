@@ -2,7 +2,8 @@ import type { StorageKeys } from './StorageKeys';
 
 class LocalStorageHelper {
   static get(key: StorageKeys) {
-    return localStorage.getItem(key);
+    const item = localStorage.getItem(key) ?? '';
+    return JSON.parse(item);
   }
 
   static set<T>(key: StorageKeys, value: T): void {
