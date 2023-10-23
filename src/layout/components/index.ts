@@ -4,3 +4,4 @@ export * from './Navbar';
 export * from './Link';
 export * from './Select';
 export * from './EmptyPage';
+export * from './Button';
