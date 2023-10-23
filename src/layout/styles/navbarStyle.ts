@@ -6,14 +6,14 @@ export const Navigator = styled.nav`
   align-items: center;
   height: 48px;
   padding: 0 20px;
-  background-color: #fda7df;
+  background-color: #6fd251;
   font-size: 18px;
   color: #fff;
   a {
     cursor: pointer;
   }
   .active {
-    color: #1b1464;
+    color: #fc8020;
     font-weight: bold;
   }
 `;
