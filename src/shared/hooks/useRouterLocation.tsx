@@ -4,7 +4,6 @@ import { useLocation, useParams } from 'react-router-dom';
 export const useRouterLocation = (locateListener?: () => void) => {
   const params = useParams();
   const { state } = useLocation();
-  console.log(params, state);
 
   useEffect(() => {
     if (locateListener) {
