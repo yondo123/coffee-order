@@ -12,21 +12,20 @@ export const MenuList = styled.ul`
 `;
 
 export const MenuCardWrapper = styled.li`
+  width: 100%;
+  height: 100%;
   padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  width: 100%;
-  height: 100%;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 `;
 
 export const MenuDetail = styled.div`
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
