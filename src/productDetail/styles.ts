@@ -4,9 +4,14 @@ export const ProductDetailContainer = styled.section`
   display: flex;
   background-color: #fff;
   padding: 16px;
+  > div:first-child {
+    flex-grow: 1;
+    height: 100%;
+  }
 `;
 
 export const ProductOptionContainer = styled.div`
+  flex-grow: 1;
   width: 50%;
   padding: 16px;
   border: 1px solid #dcdde1;
@@ -15,9 +20,32 @@ export const ProductOptionContainer = styled.div`
 `;
 
 export const ProductOrderWrapper = styled.div`
-  margin-top: 36px;
   display: flex;
-  button : {
-    color: red;
+  margin-top: 36px;
+  padding: 16px;
+  border: 1px solid #dcdde1;
+  input[type='number'] {
+    width: 144px;
+    height: 24px;
   }
+
+  button {
+    margin: 0 auto;
+  }
+`;
+
+export const ProductQuantityForm = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+`;
+
+export const TotalPrice = styled.div`
+  margin-bottom: 12px;
+  font-size: 24px;
+  text-align: right;
+  color: #fc8020;
 `;
