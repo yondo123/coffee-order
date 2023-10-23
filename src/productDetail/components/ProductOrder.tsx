@@ -1,22 +1,91 @@
+import Storage from '@shared/data/browserStorage/Storage';
+import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
 import { Stack } from '@layout/mixins';
-import { ProductOrderWrapper } from '../styles';
+import { ProductOrderWrapper, ProductQuantityForm, TotalPrice } from '../styles';
+import { Button } from '@layout/components/Button';
+import { Hidden } from '@layout/mixins';
+import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
+import { useEffect, useState } from 'react';
 import type { ProductOptionData } from '../types';
 
 interface ProductOrderProps {
-  option: ProductOptionData | null;
+  option?: ProductOptionData;
+  productId: number;
 }
 
-export const ProductOrder = ({ option }: ProductOrderProps) => {
+export const ProductOrder = ({ option, productId }: ProductOrderProps) => {
+  const storage = new Storage('PRODUCTS_CART', new CartStorageMapper());
+  const [quantity, setQuantity] = useState<number>(0);
+  const [amount, setAmount] = useState<number>(option?.stock || 0);
+
+  useEffect(() => {
+    setQuantity(0);
+  }, [option]);
+
   if (!option) {
     return null;
   }
+
+  const { name, price, stock, id } = option;
+
+  const setAmountAndQuantity = (amount: number) => {
+    const calculatedAmount = amount * price;
+    if (amount > stock) {
+      alert('재고가 부족합니다.');
+      setQuantity(0);
+      setAmount(0);
+      return;
+    }
+    setQuantity(amount);
+    setAmount(calculatedAmount);
+  };
+
+  const handleQuantityKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const { key } = e;
+    setAmountAndQuantity(Number(key));
+  };
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setAmountAndQuantity(Number(value));
+  };
+
+  const setProductToCart = () => {
+    const productItems = storage.get() ?? [];
+    storage.set([...productItems, { optionId: id, quantity, productId: productId }]);
+  };
+
   return (
     <ProductOrderWrapper>
       <Stack>
         <h3>선택된 상품</h3>
-        <p>{option.name}</p>
-        <input placeholder="수량을 입력하세요" min={1} max={option.stock} type="number" />
-        <button type="button">주문하기</button>
+        <ProductQuantityForm>
+          <p>{name}</p>
+          <Hidden>
+            <label htmlFor="quantity">수량</label>
+          </Hidden>
+          <input
+            id="quantity"
+            placeholder="수량을 입력하세요"
+            min={1}
+            max={stock}
+            type="number"
+            value={quantity}
+            onKeyUp={handleQuantityKeyUp}
+            onChange={handleQuantityChange}
+          />
+        </ProductQuantityForm>
+        <TotalPrice>
+          <strong>{`${formatNumberToCKoreanCurrency(amount)} 원`}</strong>
+        </TotalPrice>
+        <Button
+          onClick={() => {
+            setProductToCart();
+            alert('주문이 완료되었습니다.');
+          }}
+        >
+          주문하기
+        </Button>
       </Stack>
     </ProductOrderWrapper>
   );
