@@ -4,7 +4,7 @@ export const ProductDetailContainer = styled.section`
   display: flex;
   background-color: #fff;
   padding: 16px;
-  > div:first-child {
+  > div:first-of-type {
     flex-grow: 1;
     height: 100%;
   }
@@ -27,6 +27,13 @@ export const ProductOrderWrapper = styled.div`
   input[type='number'] {
     width: 144px;
     height: 24px;
+  }
+
+  input[type='number']:disabled {
+    background-color: #dcdde1;
+    color: #9e9e9e;
+    border: none;
+    cursor: not-allowed;
   }
 
   button {
