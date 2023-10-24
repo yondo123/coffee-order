@@ -1,10 +1,5 @@
 import type { StorageMapper } from '../browserStorage/StorageMapper';
-
-interface CartItem {
-  productId: number;
-  quantity: number;
-  optionId: number;
-}
+import type { CartItem } from '@cart/types';
 
 class CartStorageMapper implements StorageMapper<CartItem[]> {
   fromJson(json: CartItem[]): CartItem[] {
