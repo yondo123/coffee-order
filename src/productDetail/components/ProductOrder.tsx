@@ -1,11 +1,13 @@
 import Storage from '@shared/data/browserStorage/Storage';
 import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
+import { useEffect, useState } from 'react';
+import { useRouterNavigate } from '@shared/hooks/useRouterNavigate';
 import { Stack } from '@layout/mixins';
 import { ProductOrderWrapper, ProductQuantityForm, TotalPrice } from '../styles';
 import { Button } from '@layout/components/Button';
 import { Hidden } from '@layout/mixins';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
-import { useEffect, useState } from 'react';
+import type { CartItem } from '@cart/types';
 import type { ProductOptionData } from '../types';
 
 interface ProductOrderProps {
@@ -15,11 +17,18 @@ interface ProductOrderProps {
 
 export const ProductOrder = ({ option, productId }: ProductOrderProps) => {
   const storage = new Storage('PRODUCTS_CART', new CartStorageMapper());
-  const [quantity, setQuantity] = useState<number>(0);
-  const [amount, setAmount] = useState<number>(option?.stock || 0);
+  const productItems = storage.get();
+  const isItemOrdered = productItems ? productItems.some((item) => item.optionId === option?.id) : false;
+  const defaultAmount = option ? option.price * option.stock : 0;
+  const [quantity, setQuantity] = useState<number>(1);
+  const [amount, setAmount] = useState<number>(defaultAmount);
+  const moveToCartPage = useRouterNavigate({ to: `/cart` });
 
   useEffect(() => {
-    setQuantity(0);
+    setQuantity(1);
+    if (option) {
+      setAmount(option.price * 1);
+    }
   }, [option]);
 
   if (!option) {
@@ -50,11 +59,11 @@ export const ProductOrder = ({ option, productId }: ProductOrderProps) => {
     setAmountAndQuantity(Number(value));
   };
 
-  const setProductToCart = () => {
-    const productItems = storage.get() ?? [];
-    storage.set([...productItems, { optionId: id, quantity, productId: productId }]);
+  const setProductToCart = (cartItems: CartItem[] | null) => {
+    const newCartItem = { optionId: id, quantity, productId: productId };
+    const updatedCartItems = cartItems ? [...cartItems, newCartItem] : [newCartItem];
+    storage.set(updatedCartItems);
   };
-
   return (
     <ProductOrderWrapper>
       <Stack>
@@ -67,6 +76,7 @@ export const ProductOrder = ({ option, productId }: ProductOrderProps) => {
           <input
             id="quantity"
             placeholder="수량을 입력하세요"
+            disabled={isItemOrdered}
             min={1}
             max={stock}
             type="number"
@@ -79,9 +89,11 @@ export const ProductOrder = ({ option, productId }: ProductOrderProps) => {
           <strong>{`${formatNumberToCKoreanCurrency(amount)} 원`}</strong>
         </TotalPrice>
         <Button
+          disabled={isItemOrdered || quantity === 0}
           onClick={() => {
-            setProductToCart();
             alert('주문이 완료되었습니다.');
+            setProductToCart(productItems);
+            moveToCartPage();
           }}
         >
           주문하기
