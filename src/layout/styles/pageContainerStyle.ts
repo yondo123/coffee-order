@@ -9,3 +9,14 @@ export const PageContainer = styled.section`
     margin-bottom: 8px;
   }
 `;
+
+export const ErrorPageContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 16px;
+  height: 100vh;
+  background-color: #f5f6fa;
+`;
