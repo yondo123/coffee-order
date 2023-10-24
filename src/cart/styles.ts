@@ -28,3 +28,9 @@ export const Price = styled.h3`
   font-weight: 700;
   color: #fc8020;
 `;
+
+export const OrderButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+`;
