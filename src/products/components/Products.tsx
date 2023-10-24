@@ -1,5 +1,5 @@
 import { ProductCard } from './ProductCard';
-import { useRequestProducts } from '../api/useRequestProducts';
+import { useRequestProducts } from '@shared/hooks/services/queries/useRequestProducts';
 import { PageContainer } from '../../layout/styles/pageContainerStyle';
 import { MenuList } from '../styles';
 

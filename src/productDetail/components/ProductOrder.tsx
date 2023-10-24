@@ -1,7 +1,7 @@
 import Storage from '@shared/data/browserStorage/Storage';
 import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
 import { useEffect, useState } from 'react';
-import { useRouterNavigate } from '@shared/hooks/useRouterNavigate';
+import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
 import { Stack } from '@layout/mixins';
 import { ProductOrderWrapper, ProductQuantityForm, TotalPrice } from '../styles';
 import { Button } from '@layout/components/Button';

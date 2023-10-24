@@ -1,5 +1,5 @@
-import { useRequestProductDetail } from '../api/useRequestProductDetail';
-import { useRouterLocation } from '@shared/hooks/useRouterLocation';
+import { useRequestProductDetail } from '@shared/hooks/services/queries/useRequestProductDetail';
+import { useRouterLocation } from '@shared/hooks/router/useRouterLocation';
 import { isEmptyObject } from '@shared/utils/object';
 import { EmptyPage } from '@layout/components';
 import { ProductOption } from './ProductOption';
