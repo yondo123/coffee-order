@@ -4,8 +4,8 @@ import { Item } from './Item';
 import { useCart } from '../hooks/useCartTotalPrice';
 
 export const CartList = () => {
-  const { state, dispatch } = useCart();
   const storage = new Storage('PRODUCTS_CART', new CartStorageMapper());
+  const { state, dispatch } = useCart();
   const cartItem = storage.get();
 
   const updateTotalPrice = (price: number) => {
