@@ -8,7 +8,7 @@ export const Header = () => {
         <h2>Jiny Cafe</h2>
       </Hidden>
       <ImageWrapper>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" width={128} height={75} />
       </ImageWrapper>
     </header>
   );
