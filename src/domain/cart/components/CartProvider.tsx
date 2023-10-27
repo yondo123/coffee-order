@@ -1,6 +1,6 @@
 import { useReducer, ReactNode } from 'react';
-import { CartContext } from './context';
-import type { CartState, Action } from './context';
+import { CartContext } from '../contexts/cartContext';
+import type { CartState, Action } from '../contexts/cartContext';
 
 const reducer = (state: CartState, action: Action) => {
   switch (action.type) {

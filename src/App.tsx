@@ -1,7 +1,7 @@
 import { Container } from './layout/components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ProductPage, ProductDetailPage } from '@product/pages';
-import { CartPage } from '@cart/page';
+import { CartPage } from '@cart/pages/CartPage';
 
 function App() {
   return (

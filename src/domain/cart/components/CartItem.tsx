@@ -1,16 +1,16 @@
-import { useRequestProductDetail } from '@shared/hooks/services/queries/useRequestProductDetail';
+import { useEffect } from 'react';
+import { useQueryProductDetail } from '@product/hooks/services/useQueryProductDetail';
 import { ImageCenter } from '@layout/mixins';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
 import { ItemWrapper, ItemDetail } from '../styles';
-import type { CartItem } from '../types';
-import { useEffect } from 'react';
+import type { CartItem as CartItemType } from '../types';
 
-interface ItemProps extends CartItem {
+interface ItemProps extends CartItemType {
   onUpdateTotalPrice: (price: number) => void;
 }
 
-export const Item = ({ productId, optionId, quantity, onUpdateTotalPrice }: ItemProps) => {
-  const productDetail = useRequestProductDetail(productId);
+export const CartItem = ({ productId, optionId, quantity, onUpdateTotalPrice }: ItemProps) => {
+  const productDetail = useQueryProductDetail(productId);
   const { name: productName, productOptions, imageUrl } = productDetail;
   const optionDetail = productOptions.find((option) => option.id === optionId);
   const price = optionDetail?.price ? optionDetail.price * quantity : 0;

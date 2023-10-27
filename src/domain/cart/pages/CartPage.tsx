@@ -1,9 +1,6 @@
 import { Suspense } from 'react';
-import { CartProvider } from './context/CartProvider';
-import { CartList } from './components/CartList';
-import { TotalPrice } from './components/TotalPrice';
 import { PageContainer } from '@layout/styles/pageContainerStyle';
-import { OrderButton } from './components/OrderButton';
+import { CartProvider, CartList, TotalPrice, CartOrder } from '../components';
 
 export const CartPage = () => {
   return (
@@ -13,7 +10,7 @@ export const CartPage = () => {
           <h2>장바구니</h2>
           <CartList />
           <TotalPrice />
-          <OrderButton />
+          <CartOrder />
         </PageContainer>
       </Suspense>
     </CartProvider>

@@ -1,6 +1,6 @@
 import Storage from '@shared/data/browserStorage/Storage';
 import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
-import { Item } from './Item';
+import { CartItem } from './CartItem';
 import { useCart } from '../hooks/useCartTotalPrice';
 
 export const CartList = () => {
@@ -15,7 +15,7 @@ export const CartList = () => {
   return (
     <>
       {cartItem?.map(({ productId, optionId, quantity }) => (
-        <Item
+        <CartItem
           key={optionId}
           productId={productId}
           optionId={optionId}
