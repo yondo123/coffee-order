@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorPage } from '@layout/components/ErrorPage';
 import { ProductList } from '../components/ProductList';
 
-export const Product = () => {
+export const ProductPage = () => {
   return (
     <ErrorBoundary fallbackRender={ErrorPage}>
       <Suspense fallback={<h2>Loading..</h2>}>

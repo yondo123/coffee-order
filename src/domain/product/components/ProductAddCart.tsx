@@ -2,20 +2,20 @@ import Storage from '@shared/data/browserStorage/Storage';
 import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
 import { useEffect, useState } from 'react';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
+import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
 import { Stack } from '@layout/mixins';
-import { ProductOrderWrapper, ProductQuantityForm, TotalPrice } from '../styles';
 import { Button } from '@layout/components/Button';
 import { Hidden } from '@layout/mixins';
-import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
+import { ProductOrderWrapper, ProductQuantityForm, TotalPrice } from '../styles';
 import type { CartItem } from '@cart/types';
 import type { ProductOptionData } from '../types';
 
-interface ProductOrderProps {
+interface ProductAddCartProps {
   option?: ProductOptionData;
   productId: number;
 }
 
-export const ProductOrder = ({ option, productId }: ProductOrderProps) => {
+export const ProductAddCart = ({ option, productId }: ProductAddCartProps) => {
   const storage = new Storage('PRODUCTS_CART', new CartStorageMapper());
   const productItems = storage.get();
   const isItemOrdered = productItems ? productItems.some((item) => item.optionId === option?.id) : false;

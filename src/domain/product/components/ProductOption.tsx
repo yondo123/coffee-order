@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
 import { Select } from '@layout/components/Select';
+import { ProductAddCart } from './ProductAddCart';
 import { ProductOptionContainer } from '../styles';
-import { ProductOrder } from './ProductOrder';
 import type { ProductOptionData } from '../types';
 
 interface ProductOptionProps {
@@ -40,7 +40,7 @@ export const ProductOption = ({ name, price, options, productId }: ProductOption
         }}
         list={createOptionList(options, name)}
       />
-      <ProductOrder option={selectedOption} productId={productId} />
+      <ProductAddCart option={selectedOption} productId={productId} />
     </ProductOptionContainer>
   );
 };

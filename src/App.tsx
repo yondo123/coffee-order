@@ -1,7 +1,6 @@
 import { Container } from './layout/components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Product } from '@product/pages/Product';
-import { DetailPage } from '@productDetail/Page';
+import { ProductPage, ProductDetailPage } from '@product/pages';
 import { CartPage } from '@cart/page';
 
 function App() {
@@ -9,8 +8,8 @@ function App() {
     <BrowserRouter>
       <Container>
         <Routes>
-          <Route path="/" Component={Product} />
-          <Route path="/products/:productId" Component={DetailPage} />
+          <Route path="/" Component={ProductPage} />
+          <Route path="/products/:productId" Component={ProductDetailPage} />
           <Route path="/cart" Component={CartPage} />
         </Routes>
       </Container>

@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 import { fetchApi } from '@shared/utils/fetchApi';
-import type { ProductData } from '@products/types';
+import type { ProductData } from '@product/types';
 
-export const useRequestProducts = () => {
+export const useQueryProductList = () => {
   const { data, error } = useQuery('products', () => fetchApi<ProductData[]>({ method: 'GET', url: '/products' }));
 
   if (error) {

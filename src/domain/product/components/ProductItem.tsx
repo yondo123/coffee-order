@@ -1,7 +1,7 @@
 import { ImageCenter } from '@layout/mixins';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
-import { MenuCardWrapper, MenuDetail } from '../styles';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
+import { MenuCardWrapper, MenuDetail } from '../styles';
 import type { ProductData } from '../types';
 
 interface ProductItemProps {
