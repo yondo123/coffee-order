@@ -5,7 +5,4 @@ export const PageContainer = styled.section`
   background-color: #f5f6fa;
   height: 100%;
   padding: 16px;
-  h2 {
-    margin-bottom: 8px;
-  }
 `;
