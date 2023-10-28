@@ -3,7 +3,7 @@ import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
 import { Button } from '@layout/components';
 import { OrderButtonWrapper } from '../styles';
 
-export const OrderButton = () => {
+export const CartOrder = () => {
   const storage = new Storage('PRODUCTS_CART', new CartStorageMapper());
   const cartItem = storage.get();
   return (

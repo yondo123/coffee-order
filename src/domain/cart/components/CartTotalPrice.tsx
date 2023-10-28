@@ -1,6 +1,6 @@
-import { TotalPriceWrapper, Price } from '../styles';
-import { useCart } from '../hooks/useCartTotalPrice';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
+import { useCart } from '../hooks/useCartTotalPrice';
+import { TotalPriceWrapper, Price } from '../styles';
 
 export const TotalPrice = () => {
   const { state } = useCart();

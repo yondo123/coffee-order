@@ -1,13 +1,13 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorPage } from '@layout/components/ErrorPage';
-import { Products } from '../products/components/Products';
+import { ProductList } from '../components/ProductList';
 
-export const ProductsPage = () => {
+export const ProductPage = () => {
   return (
     <ErrorBoundary fallbackRender={ErrorPage}>
       <Suspense fallback={<h2>Loading..</h2>}>
-        <Products />
+        <ProductList />
       </Suspense>
     </ErrorBoundary>
   );

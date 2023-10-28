@@ -1,4 +1,4 @@
-import { useRequestProductDetail } from '@shared/hooks/services/queries/useRequestProductDetail';
+import { useQueryProductDetail } from '../hooks/services/useQueryProductDetail';
 import { useRouterLocation } from '@shared/hooks/router/useRouterLocation';
 import { isEmptyObject } from '@shared/utils/object';
 import { EmptyPage } from '@layout/components';
@@ -8,7 +8,7 @@ import { ImageCenter } from '@layout/mixins';
 
 export const ProductDetail = () => {
   const productId = useRouterLocation();
-  const productDetail = useRequestProductDetail(productId);
+  const productDetail = useQueryProductDetail(productId);
   const { id, name, price, productOptions, imageUrl } = productDetail;
 
   if (isEmptyObject(productDetail)) {

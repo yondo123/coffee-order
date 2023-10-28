@@ -1,14 +1,14 @@
-import { ImageCenter } from 'src/layout/mixins';
+import { ImageCenter } from '@layout/mixins';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
-import { MenuCardWrapper, MenuDetail } from '../styles';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
+import { MenuCardWrapper, MenuDetail } from '../styles';
 import type { ProductData } from '../types';
 
-interface ProductCardProps {
+interface ProductItemProps {
   product: ProductData;
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductItem = ({ product }: ProductItemProps) => {
   const { id, imageUrl, name, price } = product;
   const moveToDetailPage = useRouterNavigate({ to: `/products/${product.id}`, state: id });
 

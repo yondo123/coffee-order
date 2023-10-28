@@ -18,9 +18,8 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@products/*": ["src/products/*"],
-      "@productDetail/*": ["src/productDetail/*"],
-      "@cart/*": ["src/cart/*"],
+      "@product/*": ["src/domain/product/*"],
+      "@cart/*": ["src/domain/cart/*"],
       "@assets/*": ["src/assets/*"],
       "@shared/*": ["src/shared/*"],
       "@layout/*": ["src/layout/*"]
