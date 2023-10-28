@@ -2,6 +2,7 @@ import { ImageCenter } from '@layout/mixins';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
 import { MenuCardWrapper, MenuDetail } from '../styles';
+import { Heading } from '@layout/components';
 import type { ProductData } from '../types';
 
 interface ProductItemProps {
@@ -18,7 +19,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
         <img src={imageUrl} alt={name} />
       </ImageCenter>
       <MenuDetail>
-        <h3>{name}</h3>
+        <Heading>{name}</Heading>
         <p>{formatNumberToCKoreanCurrency(price)} 원</p>
       </MenuDetail>
     </MenuCardWrapper>

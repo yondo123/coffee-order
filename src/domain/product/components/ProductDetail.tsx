@@ -1,7 +1,7 @@
 import { useQueryProductDetail } from '../hooks/services/useQueryProductDetail';
 import { useRouterLocation } from '@shared/hooks/router/useRouterLocation';
 import { isEmptyObject } from '@shared/utils/object';
-import { MessageView } from '@layout/components';
+import { Heading, MessageView } from '@layout/components';
 import { ProductOption } from './ProductOption';
 import { ProductDetailContainer } from '../styles';
 import { ImageCenter } from '@layout/mixins';
@@ -17,7 +17,7 @@ export const ProductDetail = () => {
 
   return (
     <section>
-      <h2>{name}</h2>
+      <Heading size="xl">{name}</Heading>
       <ProductDetailContainer>
         <ImageCenter>
           <img src={imageUrl} alt={name} />

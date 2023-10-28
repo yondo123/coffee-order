@@ -5,7 +5,6 @@ export * from './Navbar';
 export * from './Link';
 export * from './Select';
 export * from './Button';
-
-/**Page */
+export * from './Heading';
 export * from './ErrorMessageView';
 export * from './MessageView';

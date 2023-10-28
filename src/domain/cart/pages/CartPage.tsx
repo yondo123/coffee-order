@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Heading } from '@layout/components';
 import { PageContainer } from '@layout/styles/pageContainerStyle';
 import { CartProvider, CartList, TotalPrice, CartOrder } from '../components';
 
@@ -7,7 +8,7 @@ export const CartPage = () => {
     <CartProvider>
       <Suspense>
         <PageContainer>
-          <h2>장바구니</h2>
+          <Heading size="xl">장바구니</Heading>
           <CartList />
           <TotalPrice />
           <CartOrder />
