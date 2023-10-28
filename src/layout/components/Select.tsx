@@ -1,31 +1,37 @@
 import { Hidden } from '@layout/mixins';
 import { useId } from 'react';
 
-type SelectOption = {
+type SelectOptions = {
   label: string;
   value: string;
   disabled?: boolean;
 };
 
-interface SelectProps {
-  list: SelectOption[];
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  list: SelectOptions[];
   defaultLabel?: string;
-  id?: string;
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  defaultValue?: string;
 }
 
-export const Select = ({ list, onChange, defaultLabel = '선택하세요', id }: SelectProps) => {
+export const Select = ({
+  list,
+  onChange,
+  defaultValue = '선택하세요',
+  defaultLabel = '',
+  id,
+  ...restProps
+}: SelectProps) => {
   const temporaryId = useId();
   const selectId = id ?? temporaryId;
   return (
     <>
       <Hidden>
-        <label htmlFor={selectId}>선택하세요</label>
+        <label htmlFor={selectId}>{defaultLabel}</label>
       </Hidden>
-      <select id={selectId} onChange={onChange}>
-        <option value="">{defaultLabel}</option>
+      <select id={selectId} onChange={onChange} {...restProps}>
+        <option value="">{defaultValue}</option>
         {list.map((option) => (
-          <option key={option.value} disabled={option.disabled} value={option.value}>
+          <option key={option.value} disabled={option.disabled ?? false} value={option.value}>
             {option.label}
           </option>
         ))}

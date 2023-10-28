@@ -8,10 +8,3 @@ export const LayoutContainer = styled.div`
   margin: 0 auto;
   color: #353b48;
 `;
-
-export const EmptyLayoutContainer = styled.section`
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  color: #353b48;
-`;

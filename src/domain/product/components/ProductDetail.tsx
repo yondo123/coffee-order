@@ -1,7 +1,7 @@
 import { useQueryProductDetail } from '../hooks/services/useQueryProductDetail';
 import { useRouterLocation } from '@shared/hooks/router/useRouterLocation';
 import { isEmptyObject } from '@shared/utils/object';
-import { EmptyPage } from '@layout/components';
+import { MessageView } from '@layout/components';
 import { ProductOption } from './ProductOption';
 import { ProductDetailContainer } from '../styles';
 import { ImageCenter } from '@layout/mixins';
@@ -12,7 +12,7 @@ export const ProductDetail = () => {
   const { id, name, price, productOptions, imageUrl } = productDetail;
 
   if (isEmptyObject(productDetail)) {
-    return <EmptyPage message="해당하는 상품이 존재하지 않습니다." />;
+    return <MessageView message="해당하는 상품이 존재하지 않습니다." />;
   }
 
   return (
