@@ -2,13 +2,11 @@ import { ButtonStyle } from '../styles/buttonStyle';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  disabled?: boolean;
-  onClick?: () => void;
 }
 
-export const Button = ({ children, onClick, disabled = false }: ButtonProps) => {
+export const Button = ({ children, onClick, disabled = false, type = 'button', ...restProps }: ButtonProps) => {
   return (
-    <ButtonStyle type="button" onClick={onClick ? onClick : undefined} disabled={disabled}>
+    <ButtonStyle type={type} onClick={onClick ? onClick : undefined} disabled={disabled} {...restProps}>
       {children}
     </ButtonStyle>
   );
