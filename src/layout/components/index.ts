@@ -7,5 +7,5 @@ export * from './Select';
 export * from './Button';
 
 /**Page */
-export * from './EmptyPage';
-export * from './ErrorPage';
+export * from './ErrorMessageView';
+export * from './MessageView';
