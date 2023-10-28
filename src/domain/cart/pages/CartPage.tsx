@@ -8,7 +8,7 @@ export const CartPage = () => {
     <CartProvider>
       <Suspense>
         <PageContainer>
-          <Heading size="xl">장바구니</Heading>
+          <Heading size="xxl">장바구니</Heading>
           <CartList />
           <TotalPrice />
           <CartOrder />

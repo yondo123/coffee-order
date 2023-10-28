@@ -8,7 +8,7 @@ export const ProductList = () => {
   const products = useQueryProductList();
   return (
     <PageContainer>
-      <Heading size="xl">상품 목록</Heading>
+      <Heading size="xxl">상품 목록</Heading>
       <MenuList>
         {products?.map((product) => (
           <ProductItem key={product.id} product={product} />
