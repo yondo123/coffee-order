@@ -1,5 +1,5 @@
 import Storage from '@shared/data/browserStorage/Storage';
-import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
+import CartStorageMapper from '../data/CartStorageMapper';
 import { Button } from '@layout/components';
 import { OrderButtonWrapper } from '../styles';
 

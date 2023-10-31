@@ -1,5 +1,5 @@
 import Storage from '@shared/data/browserStorage/Storage';
-import CartStorageMapper from '@shared/data/storage/CartStorageMapper';
+import CartStorageMapper from '@cart/data/CartStorageMapper';
 import { useEffect, useState } from 'react';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
