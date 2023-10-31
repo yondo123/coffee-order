@@ -1,4 +1,4 @@
-import type { StorageMapper } from '../browserStorage/StorageMapper';
+import type { StorageMapper } from '@shared/data/browserStorage/StorageMapper';
 import type { CartItem } from '@cart/types';
 
 class CartStorageMapper implements StorageMapper<CartItem[]> {
