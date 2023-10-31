@@ -1,4 +1,4 @@
-import { ErrorMessageContainer } from '@layout/styles/ContainerStyle';
+import { MessageContainer } from '@layout/styles/ContainerStyle';
 import { Heading } from '@layout/components/Heading';
 
 interface MessageViewProps {
@@ -8,9 +8,9 @@ interface MessageViewProps {
 
 export const MessageView = ({ message, children }: MessageViewProps) => {
   return (
-    <ErrorMessageContainer>
+    <MessageContainer>
       <Heading size="xl">{message}</Heading>
       {children ?? null}
-    </ErrorMessageContainer>
+    </MessageContainer>
   );
 };
