@@ -7,7 +7,7 @@ const reducer = (state: CartState, action: Action) => {
     case 'SET_TOTAL_PRICE':
       return { ...state, totalPrice: action.payload };
     default:
-      throw new Error();
+      return state;
   }
 };
 
