@@ -8,3 +8,4 @@ export * from './Button';
 export * from './Heading';
 export * from './ErrorMessageView';
 export * from './MessageView';
+export * from './Image';

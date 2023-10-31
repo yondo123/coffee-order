@@ -1,10 +1,9 @@
 import { useQueryProductDetail } from '../hooks/services/useQueryProductDetail';
 import { useRouterLocation } from '@shared/hooks/router/useRouterLocation';
 import { isEmptyObject } from '@shared/utils/object';
-import { Heading, MessageView } from '@layout/components';
+import { Heading, Image, MessageView } from '@layout/components';
 import { ProductOption } from './ProductOption';
 import { ProductDetailContainer } from '../styles';
-import { ImageCenter } from '@layout/mixins';
 
 export const ProductDetail = () => {
   const productId = useRouterLocation();
@@ -19,9 +18,7 @@ export const ProductDetail = () => {
     <section>
       <Heading size="xl">{name}</Heading>
       <ProductDetailContainer>
-        <ImageCenter>
-          <img src={imageUrl} alt={name} />
-        </ImageCenter>
+        <Image src={imageUrl} alt={name} placement="center" width={128} height={128} />
         <ProductOption name={name} price={price} options={productOptions} productId={id} />
       </ProductDetailContainer>
     </section>
