@@ -1,5 +1,4 @@
-import Storage from '@shared/data/browserStorage/Storage';
-import CartStorageMapper from '@cart/data/CartStorageMapper';
+import { useCartStorage } from '@cart/hooks/useCartStorage';
 import { useEffect, useState } from 'react';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
@@ -16,8 +15,8 @@ interface ProductAddCartProps {
 }
 
 export const ProductAddCart = ({ option, productId }: ProductAddCartProps) => {
-  const storage = new Storage('PRODUCTS_CART', new CartStorageMapper());
-  const productItems = storage.get();
+  const { getStorage, setStorage } = useCartStorage();
+  const productItems = getStorage();
   const isItemOrdered = productItems ? productItems.some((item) => item.optionId === option?.id) : false;
   const defaultAmount = option ? option.price * option.stock : 0;
   const [quantity, setQuantity] = useState<number>(1);
@@ -62,7 +61,7 @@ export const ProductAddCart = ({ option, productId }: ProductAddCartProps) => {
   const setProductToCart = (cartItems: CartItem[] | null) => {
     const newCartItem = { optionId: id, quantity, productId: productId };
     const updatedCartItems = cartItems ? [...cartItems, newCartItem] : [newCartItem];
-    storage.set(updatedCartItems);
+    setStorage(updatedCartItems);
   };
   return (
     <ProductOrderWrapper>
