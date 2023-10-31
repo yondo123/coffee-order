@@ -9,3 +9,4 @@ export * from './Heading';
 export * from './ErrorMessageView';
 export * from './MessageView';
 export * from './Image';
+export * from './Loader';
