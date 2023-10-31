@@ -1,13 +1,14 @@
 import { Suspense } from 'react';
+import { Heading, Loader } from '@layout/components';
 import { PageContainer } from '@layout/styles/pageContainerStyle';
 import { CartProvider, CartList, TotalPrice, CartOrder } from '../components';
 
 export const CartPage = () => {
   return (
     <CartProvider>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <PageContainer>
-          <h2>장바구니</h2>
+          <Heading size="xxl">장바구니</Heading>
           <CartList />
           <TotalPrice />
           <CartOrder />

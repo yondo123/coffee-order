@@ -9,10 +9,7 @@ export type Action = {
   payload: number;
 };
 
-export const CartContext = createContext<
-  | {
-      state: CartState;
-      dispatch: React.Dispatch<Action>;
-    }
-  | undefined
->(undefined);
+export const CartContext = createContext<{
+  state: CartState;
+  dispatch: React.Dispatch<Action>;
+} | null>(null);

@@ -25,7 +25,4 @@ export const ErrorMessageContainer = styled(MessageContainerStyle)`
 export const PageContainer = styled(BaseContainerStyle)`
   height: 100%;
   padding: 16px;
-  h2 {
-    margin-bottom: 8px;
-  }
 `;

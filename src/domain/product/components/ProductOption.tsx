@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
-import { Select } from '@layout/components/Select';
+import { Heading, Select } from '@layout/components';
 import { ProductAddCart } from './ProductAddCart';
 import { ProductOptionContainer } from '../styles';
 import type { ProductOptionData } from '../types';
@@ -32,7 +32,7 @@ export const ProductOption = ({ name, price, options, productId }: ProductOption
 
   return (
     <ProductOptionContainer>
-      <h3>{name}</h3>
+      <Heading>{name}</Heading>
       <p>{formatNumberToCKoreanCurrency(price)} 원</p>
       <Select
         onChange={(e) => {

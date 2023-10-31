@@ -1,7 +1,7 @@
-import { ImageCenter } from '@layout/mixins';
 import { useRouterNavigate } from '@shared/hooks/router/useRouterNavigate';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
 import { MenuCardWrapper, MenuDetail } from '../styles';
+import { Heading, Image } from '@layout/components';
 import type { ProductData } from '../types';
 
 interface ProductItemProps {
@@ -14,11 +14,9 @@ export const ProductItem = ({ product }: ProductItemProps) => {
 
   return (
     <MenuCardWrapper onClick={moveToDetailPage}>
-      <ImageCenter>
-        <img src={imageUrl} alt={name} />
-      </ImageCenter>
+      <Image src={imageUrl} alt={name} width={128} height={128} />
       <MenuDetail>
-        <h3>{name}</h3>
+        <Heading>{name}</Heading>
         <p>{formatNumberToCKoreanCurrency(price)} 원</p>
       </MenuDetail>
     </MenuCardWrapper>

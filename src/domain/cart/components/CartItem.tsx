@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useQueryProductDetail } from '@product/hooks/services/useQueryProductDetail';
-import { ImageCenter } from '@layout/mixins';
 import { formatNumberToCKoreanCurrency } from '@shared/utils/number';
 import { ItemWrapper, ItemDetail } from '../styles';
+import { Image } from '@layout/components';
 import type { CartItem as CartItemType } from '../types';
 
 interface ItemProps extends CartItemType {
@@ -23,9 +23,7 @@ export const CartItem = ({ productId, optionId, quantity, onUpdateTotalPrice }: 
   return (
     <section>
       <ItemWrapper>
-        <ImageCenter>
-          <img src={imageUrl} alt={productName} />
-        </ImageCenter>
+        <Image src={imageUrl} alt={productName} width={128} height={128} />
         <ItemDetail>
           <h3>{`${productName} ${optionDetail?.name ?? ''} ${quantity} 개`}</h3>
           <p>{formattedPrice} 원</p>

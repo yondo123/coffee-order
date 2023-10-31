@@ -1,15 +1,15 @@
 import logo from '../../assets/logo.png';
-import { Hidden, ImageWrapper } from '../mixins';
+import { Heading } from './Heading';
+import { Image } from './Image';
+import { Hidden } from '../mixins';
 
 export const Header = () => {
   return (
     <header>
       <Hidden>
-        <h2>Jiny Cafe</h2>
+        <Heading size="xl">Jiny Cafe</Heading>
       </Hidden>
-      <ImageWrapper>
-        <img src={logo} alt="logo" width={128} height={75} />
-      </ImageWrapper>
+      <Image src={logo} alt="logo" width={128} height={75} />
     </header>
   );
 };
